@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native';
 import colors from '../config/colors';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AppText from '../components/AppText';
+import AppButton from '../components/AppButton';
 
 function WelcomeScreen({ navigation }) {
     return (
@@ -11,12 +12,8 @@ function WelcomeScreen({ navigation }) {
                 <Text style={styles.logoText}>Sell What You Don't Need</Text>
             </View>
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.loginButton}>
-                    <Text style={styles.userText} onPress={() => navigation.navigate('ViewImage')}>Login User</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.registerButton}>
-                    <Text style={styles.userText}>Register User</Text>
-                </TouchableOpacity>
+                <AppButton title="Login user" onPress={() => navigation.navigate('ViewImage')} />
+                <AppButton title="Register user" color="secondary" onPress={() => navigation.navigate('ListingDetail')} />
             </View>
         </ImageBackground>
     );
@@ -32,27 +29,6 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '100%',
     },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: colors.primary,
-        borderRadius: 20,
-        marginVertical: 14,
-    },
-    registerButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: colors.secondary,
-        borderRadius: 20,
-    },
-    userText: {
-        color: '#fff',
-        textAlign: 'center',
-        marginVertical: 18,
-        fontSize: 24,
-        textTransform: 'uppercase',
-        fontWeight: 'bold'
-    },
     logo: {
         width: 100,
         height: 100,
@@ -65,19 +41,9 @@ const styles = StyleSheet.create({
     logoText: {
         color: '#fc5c65',
         top: 18,
-        ...Platform.select({
-            ios: {
-                fontSize: 25,
-                fontFamily: 'Avenir',
-                fontWeight: '600'
-            },
-            android: {
-                fontSize: 25,
-                fontFamily: 'Roboto',
-                fontWeight: '600'
-            }
-        })
-        // fontSize: 16
+        fontSize: 25,
+        fontWeight: '600',
+        fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir'
     }
 })
 

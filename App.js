@@ -5,27 +5,40 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
+import Screen from './app/components/Screen';
+import Icon from './app/components/Icon';
+import ListItem from './app/components/ListItem';
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{ title: 'Welcome', headerTitleAlign: 'center' }}
-        />
-        <Stack.Screen name="ViewImage" component={ViewImageScreen} options={{
-          headerTitleAlign: 'center',
-        }} />
-      </Stack.Navigator>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen
+    //       name="Welcome"
+    //       component={WelcomeScreen}
+    //       options={{ title: 'Welcome', headerTitleAlign: 'center' }}
+    //     />
+    //     <Stack.Screen name="ViewImage" component={ViewImageScreen} options={{
+    //       headerTitleAlign: 'center',
+    //     }} />
+    //     <Stack.Screen name="ListingDetail" component={ListingDetailsScreen} options={{
+    //       headerTitleAlign: 'center',
+    //     }} />
+    //   </Stack.Navigator>
 
-    </NavigationContainer>
+    // </NavigationContainer>
 
     // <WelcomeScreen />
     // <ViewImageScreen/>
+    <View>
+      <Screen>
+        <ListItem title="My title" subTitle="My subtitle" ImageComponent={<Icon name="email" />} />
+      </Screen>
+    </View>
     // <View>
     //   {/* <Text>Hello React native</Text> */}
     //   {/* <TouchableOpacity onPress={() => console.log('Image tapped')}><Image source={{ width: 300, height: 400, uri: 'https://picsum.photos/200/300' }} /></TouchableOpacity> */}
